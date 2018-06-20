@@ -1,3 +1,11 @@
 .btn-margin {
   margin: 7px 3px;
 }
+
+.container-fluid {
+	background-color: black;
+}
+
+	.btn-margin {
+	color: white;
+}
