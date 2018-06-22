@@ -23,7 +23,8 @@ class App extends Component {
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">WhoMagic</a>
+            
+              <a href="#">Who Magic</a>
             </Navbar.Brand>
             <Button
               bsStyle="primary"
@@ -47,6 +48,17 @@ class App extends Component {
             {
               isAuthenticated() && (
                   <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.goTo.bind(this, 'profile')}
+                  >
+                    Profile
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <Button
                     id="qsLogoutBtn"
                     bsStyle="primary"
                     className="btn-margin"
@@ -58,6 +70,9 @@ class App extends Component {
             }
           </Navbar.Header>
         </Navbar>
+        <div className="container">
+          {this.props.children}
+        </div>
       </div>
     );
   }

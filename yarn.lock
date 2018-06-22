@@ -4516,7 +4516,7 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-bootstrap@^0.31.0:
+react-bootstrap@^0.31.5:
   version "0.31.5"
   resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-0.31.5.tgz#57040fa8b1274e1e074803c21a1b895fdabea05a"
   dependencies:
@@ -4546,7 +4546,7 @@ react-dev-utils@^0.5.2:
     sockjs-client "1.0.1"
     strip-ansi "3.0.1"
 
-react-dom@^15.5.4:
+react-dom@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"
   dependencies:
@@ -4637,7 +4637,7 @@ react-scripts@0.9.5:
   optionalDependencies:
     fsevents "1.0.17"
 
-react@^15.5.4:
+react@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.2.tgz#dba0434ab439cfe82f108f0f511663908179aa72"
   dependencies:
