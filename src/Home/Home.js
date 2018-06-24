@@ -12,11 +12,17 @@ class Home extends Component {
       <div className="container">
         {
           isAuthenticated() && (
-              <h4>
+              <h3>
                 You are logged in! You can now view your{' '}
                 <Link to="profile">profile area</Link>
+
+                <h3>
+
+                Or make a new event{' '}
+                <Link to="Event">new event</Link>
                 .
-              </h4>
+                </h3>
+              </h3>
             )
         }
         {

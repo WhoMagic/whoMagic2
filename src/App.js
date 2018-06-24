@@ -24,7 +24,7 @@ class App extends Component {
           <Navbar.Header>
             <Navbar.Brand>
             
-              <a href="#">Who Magic</a>
+              <a href="Home">Who Magic</a>
             </Navbar.Brand>
             <Button
               bsStyle="primary"
@@ -53,6 +53,17 @@ class App extends Component {
                     onClick={this.goTo.bind(this, 'profile')}
                   >
                     Profile
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.goTo.bind(this, 'Event')}
+                  >
+                    Event
                   </Button>
                 )
             }
