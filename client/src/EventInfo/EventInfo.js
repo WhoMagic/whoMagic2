@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import './Event.css';
-import 'bootstrap/dist/css/bootstrap.css';
 
-class Event extends React.Component {
+class EventInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,7 +68,7 @@ class Event extends React.Component {
         </label>
         <br />
         
-         <h4> Dress code </h4>
+         <h4>  hello Dress code </h4>
         <select name="dressCode" value={this.state.dressCode} onChange={this.handleInputChange}>
   <option value="Casual">Casual</option>
   <option value="Semi-Formal">Semi-Formal</option>
@@ -87,4 +85,4 @@ class Event extends React.Component {
   }
 }
 
-export default Event;
+export default EventInfo
