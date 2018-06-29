@@ -17,7 +17,7 @@ class Profile extends Component {
   render() {
     const { profile } = this.state;
     return (
-      <div className="container">
+      //<div className="container">
         <div className="profile-area">
           <h1> Hello {profile.name}</h1>
           <Panel header="Profile">
@@ -29,7 +29,7 @@ class Profile extends Component {
             <pre>{JSON.stringify(profile, null, 2)}</pre>
           </Panel>
         </div>
-      </div>
+      
     );
   }
 }
