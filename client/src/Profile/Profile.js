@@ -17,17 +17,48 @@ class Profile extends Component {
   render() {
     const { profile } = this.state;
     return (
-      //<div className="container">
-        <div className="profile-area">
+      <div className="card">
+    <div className="img-container">
           <h1> Hello {profile.name}</h1>
           <Panel header="Profile">
+          <div className="col-sm-6">
+          <h1>Tell others a bit about yourself
+          </h1>
+      <form onSubmit={this.handleSubmit}>
+        <label>
+           <label>
+              Ocupacion:
+              <input type="text" name="Ocupacion" value={this.state.Ocupacion} 
+              onChange={this.handleInputChange}/>
+          </label>
+          <br />
+        <label>
+    Hobbies:
+    <input type="text" name="Hobbies" value={this.state.Hobbies}
+    onChange={this.handleInputChange}/>
+  </label>
+  <br />
+        <label>
+    Favorite Music:
+    <input type="text" name="favoriteMusic" value={this.state.favoriteMusic}
+    onChange={this.handleInputChange}/>
+  </label>
+        <br />
+        <label>
+          Favorite food:
+            <input type="text" name="favoriteFood"
+            value={this.state.favoriteFood} onChange={this.handleInputChange} />
+        </label>
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+          </div>
             <img src={profile.picture} alt="profile" />
             <div>
-              <ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel>
-              <h3>{profile.nickname}</h3>
             </div>
-            <pre>{JSON.stringify(profile, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(profile, null, 2)}</pre> */}
           </Panel>
+        </div>
         </div>
       
     );
