@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
 import './Profile.css';
+import ImageUpload from '../components/imageUpload/imageUpload';
 
 class Profile extends Component {
   componentWillMount() {
@@ -54,9 +55,9 @@ class Profile extends Component {
       </form>
           </div>
             <img src={profile.picture} alt="profile" />
+                  <ImageUpload/>
             <div>
             </div>
-            {/* <pre>{JSON.stringify(profile, null, 2)}</pre> */}
           </Panel>
         </div>
         </div>
