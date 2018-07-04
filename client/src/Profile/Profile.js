@@ -14,7 +14,25 @@ class Profile extends Component {
     } else {
       this.setState({ profile: userProfile });
     }
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleSubmit(event, state){
+   event.preventDefault()
+   //database
+   console.log(state);
+
+ }
+
   render() {
     const { profile } = this.state;
     return (
@@ -25,7 +43,7 @@ class Profile extends Component {
           <div className="col-sm-6">
           <h1>Tell others a bit about yourself
           </h1>
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={(e)=>this.handleSubmit(e,this.state)}>
         <label>
            <label>
               Ocupacion:
@@ -61,7 +79,6 @@ class Profile extends Component {
           </Panel>
         </div>
         </div>
-      
     );
   }
 }

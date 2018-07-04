@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Event.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Redirect } from 'react-router-dom';
 
 class Event extends React.Component {
   constructor(props) {
@@ -29,6 +30,8 @@ class Event extends React.Component {
 
   handleSubmit(event, state){
    event.preventDefault()
+   //database
+   {window.location.replace("/EventInfo")}
    console.log(state)
   }
 
