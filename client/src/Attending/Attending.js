@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import profile from "../Profile/Profile";
 
-class Details extends Component {
+class Attending extends Component {
   state = {
     books: [],
     title: "",
@@ -58,52 +59,16 @@ class Details extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+          <Col size="md-12 sm-12">
             <Jumbotron>
-              <h1>People Attending event</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Name (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Job Title (required)"
-              />
-                    <Input
-                value={this.state.company}
-                onChange={this.handleInputChange}
-                name="company"
-                placeholder="Company (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Profile info</h1>
+              <h1>Profile of attendie's</h1>
             </Jumbotron>
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
                   <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                    <Link to={"/Details/" + book._id}>
+                    <img src={profile.picture} alt="profile" />
                       <strong>
                         {book.title} (occupation) {book.author} 
                       </strong>
@@ -122,4 +87,4 @@ class Details extends Component {
   }
 }
 
-export default Details;
+export default Attending;

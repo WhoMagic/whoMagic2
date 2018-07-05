@@ -36,7 +36,7 @@ class Profile extends Component {
   render() {
     const { profile } = this.state;
     return (
-      <div className="card">
+      <div className="card" col-sm-6>
     <div className="img-container">
           <h1> Hello {profile.name}</h1>
           <Panel header="Profile">
