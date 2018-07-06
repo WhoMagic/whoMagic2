@@ -1,6 +1,11 @@
 import axios from "axios";
 
 export default {
+
+  saveProfile: function(profileData){
+    return axios.post("/api/profile/", profileData);
+  },
+
   // Gets all books
   getBooks: function() {
     return axios.get("/api/books");
@@ -18,3 +23,27 @@ export default {
     return axios.post("/api/books", bookData);
   }
 };
+
+/*
+
+export default {
+  // Gets all books
+  getwmUsers: function() {
+    return axios.get("/api/wmUsers");
+  },
+  // Gets the book with the given id
+  getwmUsers: function(id) {
+    return axios.get("/api/wmUsers/" + id);
+  },
+  // Deletes the book with the given id
+  deletewmUsers: function(id) {
+    return axios.delete("/api/wmUsers/" + id);
+  },
+  // Saves a book to the database
+  savewmUsers: function(bookData) {
+    return axios.post("/api/wmUsers", bookData);
+  }
+};
+
+
+*/
