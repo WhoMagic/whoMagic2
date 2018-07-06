@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
 import './Profile.css';
+import API from "../utils/API";
 import ImageUpload from '../components/imageUpload/imageUpload';
+import history from '../history';
 
 class Profile extends Component {
   componentWillMount() {
@@ -28,9 +30,12 @@ class Profile extends Component {
 
   handleSubmit(event, state){
    event.preventDefault()
-   //database
    console.log(state);
 
+   API.saveBook(state)
+   .then(res => this.loadBooks())
+   .catch(err => console.log(err));
+   history.replace('/Attending');
  }
 
   render() {
@@ -47,19 +52,19 @@ class Profile extends Component {
         <label>
            <label>
               Ocupacion:
-              <input type="text" name="Ocupacion" value={this.state.Ocupacion} 
+              <input type="text" name="title" value={this.state.title} 
               onChange={this.handleInputChange}/>
           </label>
           <br />
         <label>
     Hobbies:
-    <input type="text" name="Hobbies" value={this.state.Hobbies}
+    <input type="text" name="author" value={this.state.author}
     onChange={this.handleInputChange}/>
   </label>
   <br />
         <label>
     Favorite Music:
-    <input type="text" name="favoriteMusic" value={this.state.favoriteMusic}
+    <input type="text" name="synopsis" value={this.state.synopsis}
     onChange={this.handleInputChange}/>
   </label>
         <br />
