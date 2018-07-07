@@ -39,6 +39,8 @@ class EventInfo extends Component {
         <p>Description: {this.state.eventHolder.eventDescript} </p>
         <p>Dress: {this.state.eventHolder.dress}</p>
         <p>Number of Guests: {this.state.eventHolder.guestNumber}</p>
+        <p>Event Invite Code: {this.state.eventHolder.eventID}</p>
+
       </div>
       )
   }
