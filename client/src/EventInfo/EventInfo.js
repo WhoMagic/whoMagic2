@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import API from "../utils/API";
 import 'bootstrap/dist/css/bootstrap.css';
-
 import './EventInfo.css';
 
 class EventInfo extends Component {
   login() {
     this.props.auth.login();
   }
-
   state = {
     eventHolder: [],
   };
@@ -43,8 +41,6 @@ class EventInfo extends Component {
         <p>Number of Guests: {this.state.eventHolder.guestNumber}</p>
       </div>
       )
-
-  
   }
 }
 
