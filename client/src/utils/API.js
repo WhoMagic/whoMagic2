@@ -2,8 +2,12 @@ import axios from "axios";
 
 export default {
 
-  saveProfile: function(profileData){
-    return axios.post("/api/profile/", profileData);
+  saveEvent: function(eventData){
+    return axios.post("/api/event/", eventData);
+  },
+
+  getEvent: function(id){
+    return axios.get("/api/event/" + id);
   },
 
   // Gets all books

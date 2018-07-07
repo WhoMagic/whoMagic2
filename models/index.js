@@ -1,4 +1,4 @@
 module.exports = {
   //Book: require("./book")
-  Profile: require("./profile")
+  Event: require("./event")
 };

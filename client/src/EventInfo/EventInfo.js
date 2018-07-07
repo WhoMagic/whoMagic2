@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
-import { createStore } from 'redux'
+import API from "../utils/API";
+import 'bootstrap/dist/css/bootstrap.css';
 
 import './EventInfo.css';
 
@@ -8,23 +9,42 @@ class EventInfo extends Component {
   login() {
     this.props.auth.login();
   }
-  render() {
- //   myVar.subscribe(() =>
- // console.log(myVar.getState())
 
-    //console.log(createStore);
-   // var holder = queryString.parse(this.props.location.search);
-   // console.log( holder[0].name );
-  //console.log(queryString.parse(this.props.location.search))
+  state = {
+    eventHolder: [],
+  };
+
+  componentDidMount(){
+      let id = queryString.parse(this.props.location.search).eId;
+      this.loadEvent(id);
+  }
+
+  loadEvent = (id) => {
+    API.getEvent(id)
+     // .then(res => console.log(res.data))
+      .then(res =>
+      this.setState({ eventHolder: res.data })
+      )
+      .catch(err => console.log(err));
+  };
+
+  render() {
+     console.log("in here yo: " + this.state.eventHolder.eventName); 
+   
+
 
     return (
-   
-      <div className="container">
-        {
-         <h1> Event Info </h1> 
-        }
+      <div className="info">
+        <p>Event Name: {this.state.eventHolder.eventName}</p>
+        <p>Location: {this.state.eventHolder.eventLocation}</p>
+        <p>Date: {this.state.eventHolder.date}</p>
+        <p>Description: {this.state.eventHolder.eventDescript} </p>
+        <p>Dress: {this.state.eventHolder.dress}</p>
+        <p>Number of Guests: {this.state.eventHolder.guestNumber}</p>
       </div>
-    );
+      )
+
+  
   }
 }
 

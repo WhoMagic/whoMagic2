@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import './Event.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import API from "../utils/API";
-import { createStore } from 'redux'
 
 class Event extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      eventID: Math.random().toString(36).substr(2, 16),
       numberOfGuests: 0,
       eventName: "",
       eventDescription: "",
@@ -29,14 +29,16 @@ class Event extends React.Component {
     });
   }
 
- 
-
   handleSubmit(event, state, id){
 
-   event.preventDefault()
+   event.preventDefault();
+   //set new event id
+   let eId = this.state.eventID;
+   console.log("this is the eid: " + eId);
 
-   API.saveProfile({
-    eventID: Math.random().toString(36).substr(2, 16),
+   //save event info to the database
+   API.saveEvent({
+    eventID: this.state.eventID,
     eventName: this.state.eventName,
     eventLocation: this.state.eventLocation,
     guestNumber: this.state.numberOfGuests,
@@ -45,15 +47,8 @@ class Event extends React.Component {
     dress: this.state.dressCode
    })
     .catch(err => console.log(err))
-     console.log(state)
-
-   //GO TO DATABASE.
-   let myVar = "hello";
-  {window.location.replace("/EventInfo")}
- // var myVariable = [{name: 'my'}, {name: 'name'}];
-  //window.location.replace(`/EventInfo?createdEvent=${myVariable}`);
-//<Link to={{ pathname: `/component/b`, state: { yourData } }}></Link>
-
+ 
+  window.location.replace(`/EventInfo?eId=${eId}`);
   }
 
   render() {

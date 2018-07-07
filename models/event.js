@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const profileSchema = new Schema({
+const eventSchema = new Schema({
+  eventID: {type: String, required: true},
   eventName: { type: String, required: true },
   eventLocation: { type: String, required: true },
   guestNumber: { type: Number, max: 10000},
@@ -10,6 +11,6 @@ const profileSchema = new Schema({
   dress: { type: String, required: true}
 });
 
-const Profile = mongoose.model("Profile", profileSchema);
+const Event = mongoose.model("Event", eventSchema);
 
-module.exports = Profile;
+module.exports = Event;
