@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import './Event.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import API from "../utils/API";
 import { Redirect } from 'react-router-dom';
-
 
 class Event extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      eventID: Math.random().toString(36).substr(2, 16),
       numberOfGuests: 0,
       eventName: "",
       eventDescription: "",
@@ -31,32 +28,17 @@ class Event extends React.Component {
     });
   }
 
-  handleSubmit(event, state, id){
-
-   event.preventDefault();
-   //set new event id
-   let eId = this.state.eventID;
-   console.log("this is the eid: " + eId);
-
-   //save event info to the database
-   API.saveEvent({
-    eventID: this.state.eventID,
-    eventName: this.state.eventName,
-    eventLocation: this.state.eventLocation,
-    guestNumber: this.state.numberOfGuests,
-    eventDescript: this.state.eventDescription,
-    date: this.state.Date,
-    dress: this.state.dressCode
-   })
-    .catch(err => console.log(err))
- 
-  window.location.replace(`/EventInfo?eId=${eId}`);
+  handleSubmit(event, state){
+   event.preventDefault()
+   //database
+   {window.location.replace("/EventInfo")}
+   console.log(state)
   }
 
   render() {
     return (
       <div className="jumbotron">
-        <form onSubmit={(e)=>this.handleSubmit(e,this.state )}>
+        <form onSubmit={(e)=>this.handleSubmit(e,this.state)}>
           <label>
               Name of event:
               <input type="text" name="eventName" value={this.state.eventName} 
@@ -107,5 +89,4 @@ class Event extends React.Component {
     );
   }
 }
-
 export default Event;

@@ -10,14 +10,3 @@ input{
     font-size: .85em;
 	font-family: "Times New Roman", Times, serif;
 }
-
-.container{
-	height: auto;
-}
-
-.info{
-	height: 300px;
-	width: 300px;
-	background-color: white;
-	color: black;
-}
