@@ -23,9 +23,13 @@
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+
     "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
     "react-calendar": "^2.16.0",
     "react-images-upload": "^1.1.99"
+   "mongoose": "^5.0.17",
+    "if-env": "^1.0.4"
+
   }
 }
