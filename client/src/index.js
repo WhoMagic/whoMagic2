@@ -12,8 +12,3 @@ ReactDOM.render(
 );
 
 
-
-
-
-
-

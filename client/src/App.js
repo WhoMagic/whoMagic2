@@ -67,6 +67,28 @@ class App extends Component {
                   </Button>
                 )
             }
+             {
+              isAuthenticated() && (
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.goTo.bind(this, 'EventInfo')}
+                  >
+                    Event Info
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.goTo.bind(this, 'Attending')}
+                  >
+                    Attending
+                  </Button>
+                )
+            }
             {
               isAuthenticated() && (
                   <Button

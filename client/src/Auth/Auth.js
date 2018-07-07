@@ -69,7 +69,6 @@ export default class Auth {
      cb(err, profile);
    });
  }
-
  logout() {
    // Clear access token and ID token from local storage
    localStorage.removeItem('access_token');

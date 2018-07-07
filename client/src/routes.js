@@ -4,6 +4,9 @@ import App from './App';
 import Home from './Home/Home';
 import Profile from './Profile/Profile';
 import Event from './Event/Event';
+import EventInfo from './EventInfo/EventInfo';
+import Details from './Attending/Attending';
+
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
@@ -23,6 +26,9 @@ export const makeMainRoutes = () => {
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
            <Route path="/Event" component={Event} />
+           <Route path="/EventInfo" component={EventInfo} />
+           <Route path="/Attending" component={Details} />
+
           <Route path="/profile" render={(props) => (
             !auth.isAuthenticated() ? (
               <Redirect to="/home"/>
