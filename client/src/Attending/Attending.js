@@ -61,16 +61,15 @@ class Attending extends Component {
         <Row>
           <Col size="md-12 sm-12">
             <Jumbotron>
-              <h1>Profile of attendie's</h1>
+              <h1>Event:</h1>
             </Jumbotron>
             {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
                   <ListItem key={book._id}>
-                    <Link to={"/Details/" + book._id}>
-                    <img src={profile.picture} alt="profile" />
+                    <Link to={"/Detail/" + book._id}>
                       <strong>
-                        {book.title} (occupation) {book.author} 
+                      <img src={profile.picture} alt="profile" /> {book.title} (occupation) {book.author} 
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />

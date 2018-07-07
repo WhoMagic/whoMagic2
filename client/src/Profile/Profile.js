@@ -85,23 +85,6 @@ class Profile extends Component {
           </Panel>
         </div>
         </div>
-  }
-  render() {
-    const { profile } = this.state;
-    return (
-      <div className="container">
-        <div className="profile-area">
-          <h1> Hello {profile.name}</h1>
-          <Panel header="Profile">
-            <img src={profile.picture} alt="profile" />
-            <div>
-              <ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel>
-              <h3>{profile.nickname}</h3>
-            </div>
-            <pre>{JSON.stringify(profile, null, 2)}</pre>
-          </Panel>
-        </div>
-      </div>
     );
   }
 }
