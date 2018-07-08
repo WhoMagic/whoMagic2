@@ -18,6 +18,11 @@ class App extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
 
+
+
+
+
+    //console.log("hello from app.js: " + JSON.stringify(this.props));
     return (
       <div>
         <Navbar fluid>

@@ -1,13 +1,39 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import history from '../history';
+
 import './style.css';
 
 class Home extends Component {
+  
+  //bring in user profile from auth
+  componentWillMount() {
+    this.setState({ profile: {} });
+    const { userProfile, getProfile } = this.props.auth;
+    if (!userProfile) {
+      getProfile((err, profile) => {
+        this.setState({ profile });
+      });
+    } else {
+      this.setState({ profile: userProfile });
+    }
+  }
+
   login() {
     this.props.auth.login();
   }
+
   render() {
     const { isAuthenticated } = this.props.auth;
+    const { profile } = this.state; //user profile info
+
+    console.log('user email: ' + profile.email);
+
+    /*
+    for(var property in profile) {
+      console.log(property + "=" + profile[property]);
+  } */
+
     return (
       <div className="container">
         {

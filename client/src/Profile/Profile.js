@@ -4,6 +4,7 @@ import './Profile.css';
 import API from "../utils/API";
 import ImageUpload from '../components/imageUpload/imageUpload';
 import history from '../history';
+import { stringify } from 'querystring';
 
 class Profile extends Component {
   componentWillMount() {
@@ -31,7 +32,6 @@ class Profile extends Component {
 
   handleSubmit(event, state){
    event.preventDefault()
-   console.log(state);
 
    API.saveBook(state)
    .then(res => this.loadBooks())
@@ -41,6 +41,14 @@ class Profile extends Component {
 
   render() {
     const { profile } = this.state;
+    //console.log("in here: " + profile);
+
+    for(var property in profile) {
+      console.log(property + "=" + profile[property]);
+  }
+
+
+
     return (
       <div className="card" col-sm-6>
     <div className="img-container">

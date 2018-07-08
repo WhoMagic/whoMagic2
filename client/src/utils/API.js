@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-
+  //EVENTS API CALLS
   saveEvent: function(eventData){
     return axios.post("/api/event/", eventData);
   },
@@ -13,7 +13,13 @@ export default {
   removeEvent: function(id){
     console.log("trigger axios");
     return axios.delete("/api/event/" + id);
-  }
+  },
+
+
+    //WMUSERS API CALLS
+    getwmUser: function(id){
+      return axios.get("/api/wmUser/", + id);
+    }
 };
 
 
