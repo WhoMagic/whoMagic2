@@ -47,6 +47,8 @@ class Profile extends Component {
       console.log(property + "=" + showme[property]);
   }
 
+
+
    //New User info to send to database
    API.createUser({
     userName: this.state.userName.toLowerCase(),
@@ -59,7 +61,8 @@ class Profile extends Component {
    })
     .catch(err => console.log(err))
 
- 
+    
+    
   // history.replace('/Attending');
    
  }

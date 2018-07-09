@@ -28,7 +28,7 @@ class Home extends Component {
     const { profile } = this.state; //user profile info
 
     console.log('user email: ' + profile.email);
-
+    
     /*
     for(var property in profile) {
       console.log(property + "=" + profile[property]);
