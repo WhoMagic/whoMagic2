@@ -17,9 +17,15 @@ export default {
 
 
     //WMUSERS API CALLS
+    createUser: function(userData){
+      return axios.post("/api/wmUser/", userData);
+    }
+    
+    /*
     getwmUser: function(id){
       return axios.get("/api/wmUser/", + id);
     }
+    */
 };
 
 

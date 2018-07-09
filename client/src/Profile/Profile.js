@@ -33,19 +33,42 @@ class Profile extends Component {
   handleSubmit(event, state){
    event.preventDefault()
 
-   API.saveBook(state)
-   .then(res => this.loadBooks())
-   .catch(err => console.log(err));
-   history.replace('/Attending');
+    let showme = {
+      userName: this.state.userName.toLowerCase(),
+      userEmail: this.state.profile.email.toLowerCase(),
+      occupation: this.state.occupation,
+      aboutMe: this.state.aboutMe, 
+      hobbies: this.state.hobbies,
+      food: this.state.favoriteFood,
+      music: this.state.music
+    }
+
+    for(var property in showme) {
+      console.log(property + "=" + showme[property]);
+  }
+
+   //New User info to send to database
+   API.createUser({
+    userName: this.state.userName.toLowerCase(),
+    userEmail: this.state.profile.email.toLowerCase(),
+    occupation: this.state.occupation,
+    aboutMe: this.state.aboutMe, 
+    hobbies: this.state.hobbies,
+    food: this.state.food,
+    music: this.state.music
+   })
+    .catch(err => console.log(err))
+
+ 
+  // history.replace('/Attending');
+   
  }
 
   render() {
     const { profile } = this.state;
-    //console.log("in here: " + profile);
 
-    for(var property in profile) {
-      console.log(property + "=" + profile[property]);
-  }
+
+  
 
 
 
@@ -59,28 +82,33 @@ class Profile extends Component {
           </h1>
       <form onSubmit={(e)=>this.handleSubmit(e,this.state)}>
         <label>
+        <label>
+              <input type="text" placeholder="User Name" name="userName" value={this.state.userName} 
+              onChange={this.handleInputChange}/>
+          </label>
+          <br />
            <label>
-              Ocupacion:
-              <input type="text" name="title" value={this.state.title} 
+              <input type="text" placeholder="Occupation" name="occupation" value={this.state.title} 
               onChange={this.handleInputChange}/>
           </label>
           <br />
         <label>
-    Hobbies:
-    <input type="text" name="author" value={this.state.author}
+              <textarea name="aboutMe" placeholder="Tell us about you..." value={this.state.aboutMe} onChange={this.handleInputChange}></textarea>
+          </label>
+          <br />
+          <label>
+    <input type="text" placeholder="Hobbies" name="hobbies" value={this.state.hobbies}
     onChange={this.handleInputChange}/>
   </label>
   <br />
         <label>
-    Favorite Music:
-    <input type="text" name="synopsis" value={this.state.synopsis}
+    <input type="text" placeholder="Favorite Music" name="music" value={this.state.music}
     onChange={this.handleInputChange}/>
   </label>
         <br />
         <label>
-          Favorite food:
-            <input type="text" name="favoriteFood"
-            value={this.state.favoriteFood} onChange={this.handleInputChange} />
+            <input type="text" placeholder="Favorite Food" name="food"
+            value={this.state.food} onChange={this.handleInputChange} />
         </label>
         </label>
         <input type="submit" value="Submit" />
