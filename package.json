@@ -26,6 +26,7 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
     "query-string": "^6.1.0",
+    "react-code-input": "^3.5.0",
     "react-images-upload": "^1.1.99",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"

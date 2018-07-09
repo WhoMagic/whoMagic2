@@ -9,3 +9,12 @@
   img {
       size: auto;
   }
+
+h2 {
+  text-align: center;
+}
+
+.sidebar-section img {
+  width: 100%;
+  margin-bottom: 2em;
+}

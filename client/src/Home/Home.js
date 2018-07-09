@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import history from '../history';
-
 import './style.css';
 
 class Home extends Component {
@@ -29,10 +28,6 @@ class Home extends Component {
 
     console.log('user email: ' + profile.email);
     
-    /*
-    for(var property in profile) {
-      console.log(property + "=" + profile[property]);
-  } */
 
     return (
       <div className="container">
@@ -44,9 +39,12 @@ class Home extends Component {
 
                 <h3>
 
-                Or make a new event{' '}
+                make a new event{' '}
                 <Link to="Event">new event</Link>
-                .
+                <br/>
+                <br />
+              Got an invite? Enter the code here 
+              
                 </h3>
               </h3>
             )
