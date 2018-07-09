@@ -33,6 +33,7 @@ class Profile extends Component {
   handleSubmit(event, state){
    event.preventDefault()
 
+/*
     let showme = {
       userName: this.state.userName.toLowerCase(),
       userEmail: this.state.profile.email.toLowerCase(),
@@ -46,7 +47,7 @@ class Profile extends Component {
     for(var property in showme) {
       console.log(property + "=" + showme[property]);
   }
-
+*/
 
 
    //New User info to send to database
@@ -59,7 +60,7 @@ class Profile extends Component {
     food: this.state.food,
     music: this.state.music
    })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 
     
     
