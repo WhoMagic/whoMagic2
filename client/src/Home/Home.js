@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import API from "../utils/API";
 import history from '../history';
 import './style.css';
 
 class Home extends Component {
   
+  state = {
+    userName: ""
+   // profile: {}
+  };
+
   //bring in user profile from auth
   componentWillMount() {
-    this.setState({ profile: {} });
+    //this.setState({ profile: {} });
+
     const { userProfile, getProfile } = this.props.auth;
+/*
     if (!userProfile) {
       getProfile((err, profile) => {
         this.setState({ profile });
@@ -16,20 +24,55 @@ class Home extends Component {
     } else {
       this.setState({ profile: userProfile });
     }
+    */
+
+    //does email exist in database?
+ 
+
+    getProfile((err, profile, cb) => {
+      this.regCheck(profile.email);
+    });
   }
 
-  login() {
+ 
+
+  regCheck = (email) => {
+    API.registerCheck(email)
+      .then(function (response) {
+         // console.log(response.data.userName);
+          if(response.data == null){
+            window.location.replace(`/Register`);
+          }else{
+            let res = response;
+           // console.log("this is the response: " + response.data);
+            this.setState({ userName: res.userName })
+          }
+      })
+      .catch(function (error) { 
+          console.log(error.response);
+      })
+  }
+
+  login = () => {
     this.props.auth.login();
   }
+
 
   render() {
     const { isAuthenticated } = this.props.auth;
     const { profile } = this.state; //user profile info
+    const { userInfo } = this.state.userInfo;
 
-    console.log('user email: ' + profile.email);
-    
+    console.log(this.state.userName);
+
+  
+
 
     return (
+
+
+
+
       <div className="container">
         {
           isAuthenticated() && (
