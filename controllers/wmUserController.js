@@ -4,11 +4,12 @@ const db = require("../models");
 module.exports = {
 
   create: function(req, res) {
-    console.log("it goes it goes");
+    console.log("SERVER BACKEND it goes it goes");
     db.WmUser
       .create(req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(res.status(422).send(err));
+      .catch(err => res.status(422).json(err));
+    }
 
       //.catch(err=> console.log(err.message);
        // console.log('this is my error: ' + err.message) )
@@ -22,6 +23,6 @@ module.exports = {
 
     //  .catch(err => console.log("the error is: " + err) );//res.status(422).json(err.message));
       //console.log(res);
-  }
+  
 };
 

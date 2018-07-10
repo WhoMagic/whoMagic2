@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
 import './Profile.css';
 import API from "../utils/API";
+import { Redirect } from 'react-router-dom';
 import ImageUpload from '../components/imageUpload/imageUpload';
 import history from '../history';
 import { stringify } from 'querystring';
@@ -33,7 +34,28 @@ class Profile extends Component {
   handleSubmit(event, state){
    event.preventDefault()
 
-/*
+   //New User info to send to database
+   API.createUser({
+    userName: this.state.userName.toLowerCase(),
+    userEmail: this.state.profile.email.toLowerCase(),
+    occupation: this.state.occupation,
+    aboutMe: this.state.aboutMe, 
+    hobbies: this.state.hobbies,
+    food: this.state.food,
+    music: this.state.music
+   })
+   .then(function (response) {
+    console.log(response);
+   })
+   .catch(function (error) {
+    if(error.response.data.code == 11000){
+      console.log("THE USERNAME IS NOT UNIQUE");
+    }
+    console.log(error.response);
+   })
+
+
+    /*
     let showme = {
       userName: this.state.userName.toLowerCase(),
       userEmail: this.state.profile.email.toLowerCase(),
@@ -49,20 +71,6 @@ class Profile extends Component {
   }
 */
 
-
-   //New User info to send to database
-   API.createUser({
-    userName: this.state.userName.toLowerCase(),
-    userEmail: this.state.profile.email.toLowerCase(),
-    occupation: this.state.occupation,
-    aboutMe: this.state.aboutMe, 
-    hobbies: this.state.hobbies,
-    food: this.state.food,
-    music: this.state.music
-   })
-    .catch(err => console.log(err));
-
-    
     
   // history.replace('/Attending');
    

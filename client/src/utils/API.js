@@ -1,5 +1,7 @@
 import axios from "axios";
 
+
+
 export default {
   //EVENTS API CALLS
   saveEvent: function(eventData){
@@ -17,16 +19,32 @@ export default {
 
 
     //WMUSERS API CALLS
-    createUser: function(userData){
+    createUser: function(userData){ 
+      console.log("goes in here yoyoy");
      return axios.post("/api/wmUser/", userData);
     }
+  };
+  /*   
+ $.ajax({
+    url: "/api/wmUser",
+    method: "POST",
+    data: userData
+      
+  })
+  .done(function() {
+    console.log('success') 
+  })
+  .fail(function(err) {
+    console.log('error', err);
+  }); */
+   
     
     /*
     getwmUser: function(id){
       return axios.get("/api/wmUser/", + id);
     }
     */
-};
+
 
 
 
