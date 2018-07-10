@@ -97,7 +97,7 @@ class Register extends Component {
       <form onSubmit={(e)=>this.handleSubmit(e,this.state)}>
         <label>
         <label>
-              <input type="text" placeholder="User Name" name="userName" value={this.state.userName} 
+              <input type="text" placeholder="User Name" name="userName" style="text-transform: capitalize"  value={this.state.userName} 
               onChange={this.handleInputChange}/>
           </label>
           <br />
