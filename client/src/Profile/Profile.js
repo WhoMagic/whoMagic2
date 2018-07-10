@@ -7,6 +7,7 @@ import history from '../history';
 import { stringify } from 'querystring';
 
 class Profile extends Component {
+  
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
@@ -77,7 +78,7 @@ class Profile extends Component {
 
 
     return (
-      <div className="card" col-sm-6>
+      <div className="card bg"  col-sm-6>
     <div className="img-container">
           <h1> Hello {profile.name}</h1>
           <Panel header="Profile">

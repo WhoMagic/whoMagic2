@@ -25,10 +25,13 @@
     "express": "^4.15.4",
     "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
+    "nuka-carousel": "^4.2.5",
     "query-string": "^6.1.0",
+    "react-body-backgroundcolor": "^1.2.1",
     "react-code-input": "^3.5.0",
     "react-images-upload": "^1.1.99",
     "react-redux": "^5.0.7",
+    "react-slick": "^0.23.1",
     "redux": "^4.0.0"
   }
 }
