@@ -8,24 +8,54 @@ import history from '../history';
 import { stringify } from 'querystring';
 
 class Profile extends Component {
-  componentWillMount() {
-    this.setState({ profile: {} });
-    const { userProfile, getProfile } = this.props.auth;
-    if (!userProfile) {
-      getProfile((err, profile) => {
-        this.setState({ profile });
-      });
-    } else {
-      this.setState({ profile: userProfile });
-    }
+  state = {
+    userName: "",
+    userEmail: "",
+    occupation: "",
+    aboutMe: "",
+    hobbies: "",
+    food: "",
+    music: ""
+  };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
+  componentWillMount() {
+    const { userProfile, getProfile } = this.props.auth;
+
+    getProfile((err, profile, cb) => {
+      this.regCheck(profile.email);
+    });
   }
 
-  handleInputChange(event) {
+
+  regCheck = (email) => {
+    API.registerCheck(email)
+      .then(response => {
+          //if email is not in the database
+          if(response.data == null){
+            window.location.replace(`/Register`);
+            //if email is in the database
+          }else{
+            //get user name
+            let res = response.data;
+            let username = response.data.userName;
+             //capitalize user name
+             username = username.split(/\s+/).map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+            //set userName state
+             this.setState({ userName: username, occupation: res.occupation, aboutMe: res.aboutMe, hobbies: res.hobbies, food: res.food, music: res.music});
+          }
+      })
+      .catch(error => { 
+          console.log(error.response);
+      })
+  }
+
+
+
+  handleInputChange = (event) => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
+    console.log(target + value + name);
     this.setState({
       [name]: value
     });
@@ -33,74 +63,31 @@ class Profile extends Component {
 
   handleSubmit(event, state){
    event.preventDefault()
-
-   //New User info to send to database
-   API.createUser({
-    userName: this.state.userName.toLowerCase(),
-    userEmail: this.state.profile.email.toLowerCase(),
-    occupation: this.state.occupation,
-    aboutMe: this.state.aboutMe, 
-    hobbies: this.state.hobbies,
-    food: this.state.food,
-    music: this.state.music
-   })
-   .then(function (response) {
-    console.log(response);
-   })
-   .catch(function (error) {
-    if(error.response.data.code == 11000){
-      console.log("THE USERNAME IS NOT UNIQUE");
-    }
-    console.log(error.response);
-   })
-
-
-    /*
-    let showme = {
-      userName: this.state.userName.toLowerCase(),
-      userEmail: this.state.profile.email.toLowerCase(),
-      occupation: this.state.occupation,
-      aboutMe: this.state.aboutMe, 
-      hobbies: this.state.hobbies,
-      food: this.state.favoriteFood,
-      music: this.state.music
-    }
-
-    for(var property in showme) {
-      console.log(property + "=" + showme[property]);
-  }
-*/
-
-    
-  // history.replace('/Attending');
-   
+ 
+   console.log(state);
+  // history.replace('/Attending');  
  }
 
   render() {
     const { profile } = this.state;
 
-
-  
-
-
-
     return (
       <div className="card" col-sm-6>
     <div className="img-container">
-          <h1> Hello {profile.name}</h1>
+          <h1> Hello </h1>
           <Panel header="Profile">
           <div className="col-sm-6">
-          <h1>Tell others a bit about yourself
-          </h1>
+         
       <form onSubmit={(e)=>this.handleSubmit(e,this.state)}>
+       <label>
         <label>
-        <label>
+
               <input type="text" placeholder="User Name" name="userName" value={this.state.userName} 
               onChange={this.handleInputChange}/>
           </label>
           <br />
            <label>
-              <input type="text" placeholder="Occupation" name="occupation" value={this.state.title} 
+              <input type="text" placeholder="Occupation" name="occupation" value={this.state.occupation} 
               onChange={this.handleInputChange}/>
           </label>
           <br />
@@ -123,10 +110,10 @@ class Profile extends Component {
             value={this.state.food} onChange={this.handleInputChange} />
         </label>
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Update Info" />
       </form>
           </div>
-            <img src={profile.picture} alt="profile" />
+            <img alt="profile" />
                   <ImageUpload/>
             <div>
             </div>

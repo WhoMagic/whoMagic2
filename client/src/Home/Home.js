@@ -8,49 +8,30 @@ class Home extends Component {
   state = {
     userName: ""
   };
-
-  //bring in user profile from auth
+//bring in user profile from auth
   componentWillMount() {
-    //this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
-/*
-    if (!userProfile) {
-      getProfile((err, profile) => {
-        this.setState({ profile });
-      });
-    } else {
-      this.setState({ profile: userProfile });
-    }
-    */
 
-    //does email exist in database?
- 
     getProfile((err, profile, cb) => {
       this.regCheck(profile.email);
     });
   }
 
- 
 
   regCheck = (email) => {
     API.registerCheck(email)
       .then(response => {
-          console.log("1. from the api: " + response.data.userName);
-
-         // console.log("from the api: " + response.data);
-
+          //if email is not in the database
           if(response.data == null){
             window.location.replace(`/Register`);
+            //if email is in the database
           }else{
-          
-            console.log("this is the response: ",response.data.userName );
-            //this.setState({ userName: response.data.userName })
-            console.log("hello ? ", this)
-
+            //get user name
             let username = response.data.userName;
-
+             //capitalize user name
              username = username.split(/\s+/).map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
-            this.setState({ userName: username })
+            //set userName state
+             this.setState({ userName: username })
           }
       })
       .catch(error => { 
@@ -74,10 +55,6 @@ class Home extends Component {
 
 
     return (
-
-
-
-
       <div className="container">
         {
           isAuthenticated() && (
