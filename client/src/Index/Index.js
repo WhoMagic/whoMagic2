@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Jumbotron from '../components/Jumbotron';
-import './Register.css';
+import './Index.css';
 import MyCarousel from '../components/MyCarousel';
 import Footer from '../components/Footer';
-class Register extends Component {
+import App from '../App';
+class Index extends Component {
 
   componentWillMount()  {
   document.body.style.backgroundImage = "none";
@@ -14,7 +15,6 @@ class Register extends Component {
   render() {
     return (
       <div>
-
           <Jumbotron />
         <div className="container">
           <h2>Welcome</h2>
@@ -39,4 +39,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default Index;

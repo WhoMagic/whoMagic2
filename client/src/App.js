@@ -25,12 +25,13 @@ class App extends Component {
     //console.log("hello from app.js: " + JSON.stringify(this.props));
     return (
       <div>
-        <Navbar fluid>
-          <Navbar.Header>
-            <Navbar.Brand>
+        <Navbar>
+        <Navbar.Brand>
             
-              <a href="Home">Who Magic</a>
-            </Navbar.Brand>
+            <a href="Home"><img className="navbarLogo" src="logoResize.png" /> </a>
+          </Navbar.Brand>
+          <Navbar.Header className="float-right">
+            
             <Button
               bsStyle="primary"
               className="btn-margin"
