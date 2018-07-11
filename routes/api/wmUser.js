@@ -6,8 +6,10 @@ router
   .post(wmUserController.create);
 
 router
- // .route("/:id")
- // .get(wmUserController.findOne)
+  .route("/:email")
+  .get(wmUserController.findOne);
+
+
  // .delete(wmUserController.remove);
 
  // .put(booksController.update)

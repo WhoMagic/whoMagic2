@@ -6,6 +6,7 @@ import Profile from './Profile/Profile';
 import Event from './Event/Event';
 import EventInfo from './EventInfo/EventInfo';
 import Details from './Attending/Attending';
+import Register from './Register/Register';
 
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
@@ -30,10 +31,11 @@ export const makeMainRoutes = () => {
            <Route path="/Register" component={Register} />
            <Route path="/EventInfo" component={EventInfo} />
            <Route path="/Attending" component={Details} />
+           <Route path="/Register" render={(props) => <Register auth={auth} {...props} />} />
 
           <Route path="/profile" render={(props) => (
             !auth.isAuthenticated() ? (
-              <Redirect to="/home"/>
+              <Redirect to="/Register"/>
             ) : (
               <Profile auth={auth} {...props} />
             )

@@ -26,7 +26,6 @@ module.exports = {
   }, 
 
   remove: function(req, res) {
-    console.log("you are in the delete function");
     db.Event
     .findOne({eventID: req.params.id})
     .then(dbModel => dbModel.remove())
