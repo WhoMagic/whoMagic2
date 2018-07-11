@@ -11,7 +11,7 @@ import Register from './Register/Register';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
-import Register from './Register/Register';
+import Index from './Index/Index';
 
 const auth = new Auth();
 
@@ -25,10 +25,10 @@ export const makeMainRoutes = () => {
   return (
     <Router history={history}>
         <div>
-          <Route path="/" render={(props) => <App auth={auth} {...props} />} />
+          <Route path="/" component={Index} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
            <Route path="/Event" component={Event} />
-           <Route path="/Register" component={Register} />
+           <Route path="/Index" component={Index} />
            <Route path="/EventInfo" component={EventInfo} />
            <Route path="/Attending" component={Details} />
            <Route path="/Register" render={(props) => <Register auth={auth} {...props} />} />

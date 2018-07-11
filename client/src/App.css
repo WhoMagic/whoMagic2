@@ -9,3 +9,11 @@
 	.btn-margin {
 	color: white;
 }
+
+.container {
+	justify-content: flex-start;
+}
+.navbarLogo {
+	display: inline-block!important;
+	background-color: white;
+}
