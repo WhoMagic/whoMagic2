@@ -18,6 +18,7 @@ class Profile extends Component {
     music: ""
   };
 
+
   componentWillMount() {
     const { userProfile, getProfile } = this.props.auth;
 
@@ -72,7 +73,7 @@ class Profile extends Component {
     const { profile } = this.state;
 
     return (
-      <div className="card" col-sm-6>
+      <div className="card bg"  col-sm-6>
     <div className="img-container">
           <h1> Hello </h1>
           <Panel header="Profile">

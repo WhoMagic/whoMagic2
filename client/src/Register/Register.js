@@ -6,6 +6,9 @@ import { Redirect } from 'react-router-dom';
 import ImageUpload from '../components/imageUpload/imageUpload';
 import history from '../history';
 import { stringify } from 'querystring';
+import Jumbotron from '../components/Jumbotron';
+import MyCarousel from '../components/MyCarousel';
+import Footer from '../components/Footer';
 
 class Register extends Component {
   componentWillMount() {
@@ -135,6 +138,7 @@ class Register extends Component {
           </Panel>
         </div>
         </div>
+
     );
   }
 }
