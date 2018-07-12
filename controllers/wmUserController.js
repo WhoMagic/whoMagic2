@@ -18,10 +18,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
     },
 
-    findOneAndUpdate: function(req,res){
-      console.log("in the request now");
-    db.WmUser
-      .findOneAndUpdate({'userEmail': 'mr.ear84@gmail.com'}, req.body)
+    save: function(req,res){
+      console.log("IN DATA: "+ req.body);
+      db.WmUser
+      .save(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
     }
