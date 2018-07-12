@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import history from '../history';
 import './Event.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import API from "../utils/API";
 import { Redirect } from 'react-router-dom';
+import { stringify } from 'querystring';
 
 
 class Event extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      eventCreator: "",
       eventID: Math.random().toString(36).substr(2, 16),
       numberOfGuests: 0,
       eventName: "",
@@ -17,10 +21,39 @@ class Event extends React.Component {
       date: "",
       dressCode: "Casual"
     };
-
     this.handleInputChange = this.handleInputChange.bind(this);
     
   }
+
+  componentWillMount(){
+       const { userProfile, getProfile } = this.props.auth;
+    let newCode = Math.random().toString(36).substr(2, 16);
+    console.log("from the component");
+    
+ 
+      getProfile((err, profile, cb) => {
+      console.log(profile.email);
+      this.regCheck(profile.email);
+   //   var userStuff = this.userInfo(profile.email);
+    //  console.log("user info: " + userStuff);
+
+    });
+
+
+   // var shit = userInfo(test);
+   /*
+      */
+  }
+
+ regCheck = (email) => {
+    API.registerCheck(email)
+      .then(response => {
+          this.setState({ userID: response.data.userID});
+          console.log(this.state.userID);
+      })
+  
+ }
+  
 
   handleInputChange(event) {
     const target = event.target;
@@ -54,6 +87,8 @@ class Event extends React.Component {
   }
 
   render() {
+        const { isAuthenticated } = this.props.auth;
+
     return (
       <div className="jumbotron">
         <form onSubmit={(e)=>this.handleSubmit(e,this.state )}>
@@ -86,7 +121,7 @@ class Event extends React.Component {
         <br />
         <label>
           Date:
-            <input type="text" name="Date" placeHolder="month/day/year"
+            <input type="text" name="Date" placeholder="month/day/year"
             value={this.state.Date} onChange={this.handleInputChange} />
         </label>
         <br />

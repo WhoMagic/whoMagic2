@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import API from "../utils/API";
 import history from '../history';
 import './style.css';
+import { stringify } from 'querystring';
 
 class Home extends Component {
   state = {
@@ -15,6 +16,7 @@ class Home extends Component {
     getProfile((err, profile, cb) => {
       this.regCheck(profile.email);
     });
+    
   }
 
 
@@ -58,12 +60,12 @@ class Home extends Component {
       <div className="container bg">
         {
           isAuthenticated() && (
-              <h3 CLASSNAME="capital">
+              <h3 className="capital">
                 Welcome {this.state.userName}, <br /><br /> 
-                <span CLASSNAME="center">Create a new event</span>{' '}
+                <span className="center">Create a new event</span>{' '}
                 <Link to="Event"> new event</Link>
                 <br/><br />
-                 <input CLASSNAME="center" placeholder="Enter an Event Code"></input> <br />
+                 <input className="center" placeholder="Enter an Event Code"></input> <br />
               
                 <br />
               </h3> 
@@ -73,16 +75,7 @@ class Home extends Component {
         }
         {
           !isAuthenticated() && (
-              <h3>
-                You are not logged in! Please{' '}
-                <a
-                  style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
-                >
-                  Log In
-                </a>
-                {' '}to continue.
-              </h3>
+              <p></p>
             )
         }
       </div>

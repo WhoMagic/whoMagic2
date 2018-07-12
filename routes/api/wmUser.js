@@ -9,6 +9,9 @@ router
   .route("/:email")
   .get(wmUserController.findOne);
 
+router
+  .route("/:userUpdate")
+  .put(wmUserController.findOneAndUpdate);
 
  // .delete(wmUserController.remove);
 

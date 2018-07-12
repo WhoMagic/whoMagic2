@@ -2,10 +2,7 @@ body, html {
     height: 100%;
 }
 
-.capital{
-	text-transform: capitalize;
 
-}
 body {
 	  background-image: url("./connectedhands.jpeg");
 	   height: 100%; 
@@ -20,13 +17,7 @@ h1 {
 }
 
 h3 {
-/*	text-align: center; */
+	text-align: center;
 	background-color: black;
 	color: white;
 }
-
-.center{
-	text-align: center;
-
-}
-

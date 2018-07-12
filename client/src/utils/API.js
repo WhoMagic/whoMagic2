@@ -14,6 +14,10 @@ export default {
       return axios.post("/api/wmUser/", userData);
     },
 
+    updateProfile: function(userUpdate, email){
+      return axios.put("/api/wmUser/" + email, userUpdate);
+    },
+
   //EVENTS API CALLS
     saveEvent: function(eventData){
       return axios.post("/api/event/", eventData);
@@ -28,4 +32,3 @@ export default {
       return axios.delete("/api/event/" + id);
     }
   };
- 

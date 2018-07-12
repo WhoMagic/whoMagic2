@@ -16,6 +16,14 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
      // .then(console.log(res.json(dbModel)))
       .catch(err => res.status(422).json(err));
+    },
+
+    findOneAndUpdate: function(req,res){
+      console.log("in the request now");
+    db.WmUser
+      .findOneAndUpdate({'userEmail': 'mr.ear84@gmail.com'}, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
     }
 
 
@@ -34,4 +42,3 @@ module.exports = {
       //console.log(res);
   
 };
-

@@ -8,7 +8,8 @@ const eventSchema = new Schema({
   guestNumber: { type: Number, max: 10000},
   eventDescript: { type: String, required: true },
   date: { type: String, required: true},
-  dress: { type: String, required: true}
+  dress: { type: String, required: true},
+  usersInRoom: {type: String}
 });
 
 const Event = mongoose.model("Event", eventSchema);

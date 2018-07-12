@@ -1,54 +1,68 @@
 import React, { Component } from 'react';
-import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
-import './Profile.css';
+import { Link } from 'react-router-dom';
 import API from "../utils/API";
-import { Redirect } from 'react-router-dom';
-import ImageUpload from '../components/imageUpload/imageUpload';
 import history from '../history';
+import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
+import './Register.css';
+//import { Redirect } from 'react-router-dom';
+import ImageUpload from '../components/imageUpload/imageUpload';
 import { stringify } from 'querystring';
 
-class Profile extends Component {
+class Register extends Component {
   state = {
+    userID: "",
     userName: "",
     userEmail: "",
     occupation: "",
-    aboutMe: "",
+    aboutMe: "", 
     hobbies: "",
     food: "",
     music: ""
-  };
-
-
+  }
   componentWillMount() {
+
     const { userProfile, getProfile } = this.props.auth;
+    let newCode = Math.random().toString(36).substr(2, 16);
 
     getProfile((err, profile, cb) => {
-      this.regCheck(profile.email);
+      this.setState({ userID: newCode, userName: "", userEmail: profile.email, occupation: "", aboutMe: "", hobbies: "", food: "", music: "" });
+     // this.regCheck(profile.email);
     });
   }
 
+  handleSubmit(event, state){
+   event.preventDefault()
 
-  regCheck = (email) => {
-    API.registerCheck(email)
-      .then(response => {
-          //if email is not in the database
-          if(response.data == null){
-            window.location.replace(`/Register`);
-            //if email is in the database
-          }else{
-            //get user name
-            let res = response.data;
-            let username = response.data.userName;
-             //capitalize user name
-             username = username.split(/\s+/).map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
-            //set userName state
-             this.setState({ userName: username, userEmail: email, occupation: res.occupation, aboutMe: res.aboutMe, hobbies: res.hobbies, food: res.food, music: res.music});
-          }
-      })
-      .catch(error => { 
-          console.log(error.response);
-      })
-  }
+   
+   //New User info to send to database
+   
+   API.createUser({
+    userID: this.state.userID,
+    userName: this.state.userName.toLowerCase(),
+    userEmail: this.state.userEmail.toLowerCase(),
+    occupation: this.state.occupation,
+    aboutMe: this.state.aboutMe, 
+    hobbies: this.state.hobbies,
+    food: this.state.food,
+    music: this.state.music
+   })
+   //if user registers take them to homepage
+   .then(function (response) {
+    if(response.status == 200){
+      window.location.replace(`/home`);
+    }
+   })
+   //if there was an error registering, throw error
+   .catch(function (error) {
+    if(error.response.data.code == 11000){
+      console.log("THE USERNAME IS NOT UNIQUE");
+    }
+    console.log(error.response);
+   })
+  
+  // history.replace('/Attending');
+  
+ }
 
   handleInputChange = (event) => {
     const target = event.target;
@@ -60,60 +74,27 @@ class Profile extends Component {
     });
   }
 
-  handleSubmit = (event, state, email) => {
-   event.preventDefault()
-
-   console.log("in here bozo: " + this.state.userEmail + this.state.userName);
-
-    
-
-    API.updateProfile({
-    userName: this.state.userName.toLowerCase(),
-    userEmail: this.state.userEmail.toLowerCase(),
-    occupation: this.state.occupation,
-    aboutMe: this.state.aboutMe, 
-    hobbies: this.state.hobbies,
-    food: this.state.food,
-    music: this.state.music
-   },
-    this.state.userEmail.toLowerCase()
-
-   )
-   .then(function (response) {
-    if(response.status == 200){
-      console.log("changes made");
-    }
-   })
-   //if there was an error registering, throw error
-   .catch(function (error) {
-    if(error.response){
-      console.log(error.response);
-    }
-  // history.replace('/Attending');  
-    })
-  }
-
-  render() {
+    render() {
     const { profile } = this.state;
 
     return (
-      <div className="card bg"  col-sm-6>
+      <div className="card" col-sm-6>
     <div className="img-container">
-          <h1> Hello </h1>
-          <Panel header="Profile">
+          <h1> Welcome to WHO MAGIC</h1>
+          <Panel header="Register">
           <div className="col-sm-6">
-         
+          <h1>User Profile
+          </h1>
       <form onSubmit={(e)=>this.handleSubmit(e,this.state)}>
-       <label>
         <label>
-
+        <label>
               <input type="text" placeholder="User Name" name="userName" value={this.state.userName} 
               onChange={this.handleInputChange}/>
           </label>
           <br />
            <label>
               <input type="text" placeholder="Occupation" name="occupation" value={this.state.occupation} 
-              onChange={this.handleInputChange}/>
+              onChange={this.handleInputChange} />
           </label>
           <br />
         <label>
@@ -135,10 +116,10 @@ class Profile extends Component {
             value={this.state.food} onChange={this.handleInputChange} />
         </label>
         </label>
-        <input type="submit" value="Update Info" />
+        <input type="submit" value="Submit" />
       </form>
           </div>
-            <img alt="profile" />
+            <img  alt="profile" />
                   <ImageUpload/>
             <div>
             </div>
@@ -149,4 +130,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default Register;
