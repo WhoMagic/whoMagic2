@@ -11,7 +11,7 @@ router
 
 router
   .route("/:userUpdate")
-  .put(wmUserController.findOneAndUpdate);
+  .put(wmUserController.save);
 
  // .delete(wmUserController.remove);
 

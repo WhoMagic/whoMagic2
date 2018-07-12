@@ -7,7 +7,8 @@ class Footer extends React.Component {
       <Grid>
         <hr />
         <footer>
-          <p>who magic © Company 2018</p>
+          {/* centering footer */}
+          <p className="FooterCenter">who magic © Company 2018</p>
         </footer>
       </Grid>
     );

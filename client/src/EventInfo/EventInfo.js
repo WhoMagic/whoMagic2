@@ -40,7 +40,7 @@ class EventInfo extends Component {
   render() {
   
     return (
-      <div className="info">
+      <div className="card bg"  col-sm-6>
         <p>Event Name: {this.state.eventHolder.eventName}</p>
         <p>Location: {this.state.eventHolder.eventLocation}</p>
         <p>Date: {this.state.eventHolder.date}</p>

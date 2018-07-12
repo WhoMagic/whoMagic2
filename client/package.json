@@ -3,7 +3,7 @@
   "name": "mern",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3003/",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
         "auth0-js": "^9.0.0",
     "bootstrap": "^3.3.7",

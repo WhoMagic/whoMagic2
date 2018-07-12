@@ -14,8 +14,9 @@ export default {
       return axios.post("/api/wmUser/", userData);
     },
 
-    updateProfile: function(userUpdate, email){
-      return axios.put("/api/wmUser/" + email, userUpdate);
+    updateProfile: function(userUpdate){
+      console.log("this is update: " + userUpdate);
+      return axios.put("/api/wmUser/", userUpdate);
     },
 
   //EVENTS API CALLS

@@ -65,7 +65,7 @@ class Profile extends Component {
 
    console.log("in here bozo: " + this.state.userEmail + this.state.userName);
 
-    
+
 
     API.updateProfile({
     userName: this.state.userName.toLowerCase(),
@@ -75,10 +75,7 @@ class Profile extends Component {
     hobbies: this.state.hobbies,
     food: this.state.food,
     music: this.state.music
-   },
-    this.state.userEmail.toLowerCase()
-
-   )
+   })
    .then(function (response) {
     if(response.status == 200){
       console.log("changes made");
